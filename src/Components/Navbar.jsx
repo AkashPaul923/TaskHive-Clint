@@ -11,13 +11,15 @@ const Navbar = () => {
         <Link className="hover:text-gray-300 transition-colors duration-300">About</Link>
         <Link className="hover:text-gray-300 transition-colors duration-300">Services</Link>
         <Link className="hover:text-gray-300 transition-colors duration-300">Contact</Link>
+        <Link to="/register" className="hover:text-gray-300 transition-colors duration-300">Register</Link>
+        <Link to="/login" className="hover:text-gray-300 transition-colors duration-300">Login</Link>
     </>
 
     return (
         <nav className="bg-blue-600 text-white py-4 shadow-lg relative">
             <div className="container mx-auto flex justify-between items-center px-5">
                 <h1 className="text-2xl font-bold">
-                    ServizoHub
+                    TaskHive
                 </h1>
                 <div className="hidden md:flex space-x-6">
                     {links}
