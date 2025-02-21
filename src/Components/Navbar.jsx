@@ -1,35 +1,35 @@
 import { useState } from "react";
 import { FaBars, FaTimes } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import useAuth from "../Hooks/useAuth";
 
 const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
-    const {user} = useAuth()
+    const {user, logout } = useAuth()
 
 
     const links = <>
-        <Link to="/" className="hover:text-gray-300 transition-colors duration-300"> Home</Link>
-        <Link className="hover:text-gray-300 transition-colors duration-300">About</Link>
-        <Link className="hover:text-gray-300 transition-colors duration-300">Services</Link>
-        <Link className="hover:text-gray-300 transition-colors duration-300">Contact</Link>
+        <NavLink to="/" className={({ isActive }) => isActive ? " font-bold border-b-2 ": ""}> Home</NavLink>
+        <NavLink  className={({ isActive }) => isActive ? " font-bold border-b-2": ""}>About</NavLink>
+        <NavLink  className={({ isActive }) => isActive ? " font-bold border-b-2": ""}>Tasks</NavLink>
+        <NavLink  className={({ isActive }) => isActive ? " font-bold border-b-2": ""}>Contact</NavLink>
         {
             user?
             <>
-            <button className="hover:text-gray-300 transition-colors duration-300">Logout</button>
+            <button onClick={logout}  className={({ isActive }) => isActive ? " font-bold border-b-2": ""}>Logout</button>
             
             </>
             :
             <>
-            <Link to="/register" className="hover:text-gray-300 transition-colors duration-300">Register</Link>
-            <Link to="/login" className="hover:text-gray-300 transition-colors duration-300">Login</Link>
+            <NavLink to="/register"  className={({ isActive }) => isActive ? " font-bold border-b-2": ""}>Register</NavLink>
+            <NavLink to="/login"  className={({ isActive }) => isActive ? " font-bold border-b-2": ""}>Login</NavLink>
             </>
         }
     </>
 
     return (
-        <nav className="bg-blue-600 text-white py-4 shadow-lg relative">
-            <div className="container mx-auto flex justify-between items-center px-5">
+        <nav className="bg-base-300 py-4 relative">
+            <div className="max-w-[1920px] mx-auto flex justify-between items-center px-5">
                 <h1 className="text-2xl font-bold">
                     TaskHive
                 </h1>
@@ -37,7 +37,7 @@ const Navbar = () => {
                 <div className="hidden md:flex space-x-6">
                     {links}
                 </div>
-                {user && <img className="h-10 w-10 object-cover rounded-full" src={user?.photoURL} alt="" />}
+                {user && <img className="h-8 w-8 object-cover rounded-full" src={user?.photoURL} alt="" />}
                 <div className="md:hidden">
                     <button
                         onClick={() => setIsOpen(!isOpen)}
@@ -50,7 +50,7 @@ const Navbar = () => {
             </div>
             {/* Mobile Menu */}
             <div
-                className={`md:hidden absolute w-full flex flex-col items-center space-y-4 mt-4 bg-blue-700 p-4 transition-all duration-300 ease-in-out ${
+                className={`md:hidden z-50 absolute w-full flex flex-col items-center space-y-4 mt-4 bg-base-300 p-4 transition-all duration-300 ease-in-out ${
                     isOpen
                         ? "opacity-100 translate-y-0"
                         : "opacity-0 -translate-y-5 pointer-events-none"

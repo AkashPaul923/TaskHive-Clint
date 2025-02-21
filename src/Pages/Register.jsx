@@ -3,9 +3,11 @@ import { useForm } from "react-hook-form";
 import SocialLogin from "../Components/SocialLogin";
 import useAuth from "../Hooks/useAuth";
 import axios from "axios";
+import { useState } from "react";
 
 const Register = () => {
     const navigate = useNavigate()
+    const [loading, setLoading] = useState(false);
     const { user, setUser, createUser, loader, profileUpdate } = useAuth()
     const {
         register,
@@ -15,10 +17,11 @@ const Register = () => {
 
 
     const onSubmit = (data) => {
-        console.log(data);
+        setLoading(true)
+        // console.log(data);
         createUser( data.email, data.password)
         .then(res => {
-            console.log(res);
+            // console.log(res);
             const userData = {
                 userId : res.user.uid,
                 name: data.name,
@@ -32,13 +35,15 @@ const Register = () => {
                     if(res.data.insertedId){
                         // toast.success("Successfully register")
                         navigate("/")
+                        setLoading(false)
                     }
                 })
             })
         })
+        .catch(()=>{setLoading(false)})
     };
 
-    if(loader){
+    if(loading){
         return <progress class="progress w-56"></progress>
     }
 
