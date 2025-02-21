@@ -1,10 +1,12 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import SocialLogin from "../Components/SocialLogin";
 import useAuth from "../Hooks/useAuth";
+import axios from "axios";
 
 const Register = () => {
-    const { createUser, loader } = useAuth()
+    const navigate = useNavigate()
+    const { user, setUser, createUser, loader, profileUpdate } = useAuth()
     const {
         register,
         formState: { errors },
@@ -17,6 +19,22 @@ const Register = () => {
         createUser( data.email, data.password)
         .then(res => {
             console.log(res);
+            const userData = {
+                userId : res.user.uid,
+                name: data.name,
+                email: data.email
+            }
+            profileUpdate( data.name, data.photo )
+            .then(() =>{
+                setUser({...res.user, displayName: data.name, photoURL : data.photo})
+                axios.post('http://localhost:5000/users', userData)
+                .then(res =>{
+                    if(res.data.insertedId){
+                        // toast.success("Successfully register")
+                        navigate("/")
+                    }
+                })
+            })
         })
     };
 

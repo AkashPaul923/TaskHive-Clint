@@ -15,7 +15,10 @@ const Navbar = () => {
         <Link className="hover:text-gray-300 transition-colors duration-300">Contact</Link>
         {
             user?
+            <>
             <button className="hover:text-gray-300 transition-colors duration-300">Logout</button>
+            
+            </>
             :
             <>
             <Link to="/register" className="hover:text-gray-300 transition-colors duration-300">Register</Link>
@@ -30,9 +33,11 @@ const Navbar = () => {
                 <h1 className="text-2xl font-bold">
                     TaskHive
                 </h1>
+                <div className="flex items-center gap-6">
                 <div className="hidden md:flex space-x-6">
                     {links}
                 </div>
+                {user && <img className="h-10 w-10 object-cover rounded-full" src={user?.photoURL} alt="" />}
                 <div className="md:hidden">
                     <button
                         onClick={() => setIsOpen(!isOpen)}
@@ -40,6 +45,7 @@ const Navbar = () => {
                     >
                         {isOpen ? <FaTimes size={24} /> : <FaBars size={24} />}
                     </button>
+                </div>
                 </div>
             </div>
             {/* Mobile Menu */}
