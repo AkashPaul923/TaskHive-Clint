@@ -1,16 +1,29 @@
 import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import SocialLogin from "../Components/SocialLogin";
+import useAuth from "../Hooks/useAuth";
 
 const Register = () => {
+    const { createUser, loader } = useAuth()
     const {
         register,
         formState: { errors },
         handleSubmit,
     } = useForm();
+
+
     const onSubmit = (data) => {
         console.log(data);
+        createUser( data.email, data.password)
+        .then(res => {
+            console.log(res);
+        })
     };
+
+    if(loader){
+        return <progress class="progress w-56"></progress>
+    }
+
 
     return (
         <div

@@ -1,9 +1,11 @@
 import { useState } from "react";
 import { FaBars, FaTimes } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import useAuth from "../Hooks/useAuth";
 
 const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
+    const {user} = useAuth()
 
 
     const links = <>
@@ -11,8 +13,15 @@ const Navbar = () => {
         <Link className="hover:text-gray-300 transition-colors duration-300">About</Link>
         <Link className="hover:text-gray-300 transition-colors duration-300">Services</Link>
         <Link className="hover:text-gray-300 transition-colors duration-300">Contact</Link>
-        <Link to="/register" className="hover:text-gray-300 transition-colors duration-300">Register</Link>
-        <Link to="/login" className="hover:text-gray-300 transition-colors duration-300">Login</Link>
+        {
+            user?
+            <button className="hover:text-gray-300 transition-colors duration-300">Logout</button>
+            :
+            <>
+            <Link to="/register" className="hover:text-gray-300 transition-colors duration-300">Register</Link>
+            <Link to="/login" className="hover:text-gray-300 transition-colors duration-300">Login</Link>
+            </>
+        }
     </>
 
     return (
