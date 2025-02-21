@@ -39,7 +39,7 @@ const Login = () => {
                 {/* Left Side: Login Form */}
                 <div className="w-full">
                     <h2 className="text-2xl font-bold text-center mb-6">
-                        Register Account
+                        Login Account
                     </h2>
                     <form
                         onSubmit={handleSubmit(onSubmit)}
@@ -56,7 +56,7 @@ const Login = () => {
                                 placeholder="Enter your email"
                                 className="input input-bordered bg-transparent backdrop-blur-lg w-full"
                             />
-                            {errors.name && (
+                            {errors.email && (
                                 <span className="text-red-500">
                                     This field is required
                                 </span>
@@ -90,7 +90,7 @@ const Login = () => {
                         <input
                             type="submit"
                             className="btn btn-outline btn-primary w-full mt-4"
-                            value="Sign Up"
+                            value="Login"
                         />
                     </form>
 

@@ -11,8 +11,8 @@ const Navbar = () => {
     const links = <>
         <NavLink to="/" className={({ isActive }) => isActive ? " font-bold border-b-2 ": ""}> Home</NavLink>
         <NavLink  className={({ isActive }) => isActive ? " font-bold border-b-2": ""}>About</NavLink>
-        <NavLink  className={({ isActive }) => isActive ? " font-bold border-b-2": ""}>Tasks</NavLink>
-        <NavLink  className={({ isActive }) => isActive ? " font-bold border-b-2": ""}>Contact</NavLink>
+        <NavLink to="/tasks" className={({ isActive }) => isActive ? " font-bold border-b-2": ""}>Tasks</NavLink>
+        <NavLink to="/add-task"  className={({ isActive }) => isActive ? " font-bold border-b-2": ""}>Add Task</NavLink>
         {
             user?
             <>
