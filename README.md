@@ -5,7 +5,7 @@ TaskHive  a Task Management Application where users can add, edit, delete, and r
 
 
 ## Live Link
-- Check out the live version of MicroMint Clint here: [MicroMint](https://taskhive-b8e34.web.app/)
+- Check out the live version of TaskHive Clint here: [TaskHive](https://taskhive-b8e34.web.app/)
 
 
 ## Technologies
@@ -62,7 +62,7 @@ Before you begin, ensure you have the following installed:
 
 2. **Navigate to the project directory**
     ```bash
-    cd MicroMint-Clint
+    cd TaskHive-Clint
 
 3. **Install dependencies**
     ```bash
