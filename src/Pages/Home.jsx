@@ -1,9 +1,14 @@
+import Featured from "../Components/Featured";
+import Hero from "../Components/Hero";
+import HowItIsWorked from "../Components/HowItIsWorked";
 
 
 const Home = () => {
     return (
         <div>
-            Home
+            <Hero></Hero>
+            <Featured></Featured>
+            <HowItIsWorked></HowItIsWorked>
         </div>
     );
 };
