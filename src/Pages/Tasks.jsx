@@ -6,7 +6,7 @@ import TaskCard from "../Components/TaskCard";
 
 const Tasks = () => {
     const {user} = useAuth()
-    const { data=[], isLoading } = useQuery({
+    const { data=[], isLoading, refetch } = useQuery({
         queryKey: ['tasks', user.email],
         queryFn: async () => {
             const res = await axios.get(`http://localhost:5000/tasks?email=${user.email}`)
@@ -26,7 +26,7 @@ const Tasks = () => {
                     <p className="text-center bg-neutral text-base-100 rounded-t-3xl text-2xl font-bold py-3">To Do</p>
                     <div>
                         {
-                            data[0].tasks.map(task => <TaskCard key={task._id} task={task}></TaskCard>)
+                            data[0].tasks.map(task => <TaskCard key={task._id} task={task} refetch={refetch}></TaskCard>)
                         }
                     </div>
                 </div>
@@ -34,7 +34,7 @@ const Tasks = () => {
                     <p className="text-center bg-neutral text-base-100 rounded-t-3xl text-2xl font-bold py-3">In Progress</p>
                     <div>
                         {
-                            data[1].tasks.map(task => <TaskCard key={task._id} task={task}></TaskCard>)
+                            data[1].tasks.map(task => <TaskCard key={task._id} task={task} refetch={refetch}></TaskCard>)
                         }
                     </div>
                 </div>
@@ -42,7 +42,7 @@ const Tasks = () => {
                     <p className="text-center bg-neutral text-base-100 rounded-t-3xl text-2xl font-bold py-3">Done</p>
                     <div>
                         {
-                            data[2].tasks.map(task => <TaskCard key={task._id} task={task}></TaskCard>)
+                            data[2].tasks.map(task => <TaskCard key={task._id} task={task} refetch={refetch}></TaskCard>)
                         }
                     </div>
                 </div>
