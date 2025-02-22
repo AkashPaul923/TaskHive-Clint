@@ -5,7 +5,7 @@ import Swal from 'sweetalert2';
 const TaskCard = ({task, refetch}) => {
     const handleTaskDelete = (id) => {
         console.log( id );
-        axios.delete(`http://localhost:5000/tasks/${id}`)
+        axios.delete(`https://task-hive-server-kohl.vercel.app/tasks/${id}`)
         .then(res => {
             console.log(res.data);
             if(res.data.deletedCount > 0){

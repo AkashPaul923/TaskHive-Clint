@@ -23,7 +23,7 @@ const AddTask = () => {
             creationDate: new Date().toISOString()
         }
         // console.log(taskInfo);
-        axios.post('http://localhost:5000/tasks', taskInfo)
+        axios.post('https://task-hive-server-kohl.vercel.app/tasks', taskInfo)
         .then(res => {
             if(res.data.insertedId){
                 reset()

@@ -9,7 +9,7 @@ const Tasks = () => {
     const { data=[], isLoading, refetch } = useQuery({
         queryKey: ['tasks', user.email],
         queryFn: async () => {
-            const res = await axios.get(`http://localhost:5000/tasks?email=${user.email}`)
+            const res = await axios.get(`https://task-hive-server-kohl.vercel.app/tasks?email=${user.email}`)
             console.log(res.data[0].categories);
             return res.data[0].categories
             

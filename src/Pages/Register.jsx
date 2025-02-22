@@ -30,7 +30,7 @@ const Register = () => {
             profileUpdate( data.name, data.photo )
             .then(() =>{
                 setUser({...res.user, displayName: data.name, photoURL : data.photo})
-                axios.post('http://localhost:5000/users', userData)
+                axios.post('https://task-hive-server-kohl.vercel.app/users', userData)
                 .then(res =>{
                     if(res.data.insertedId){
                         // toast.success("Successfully register")
